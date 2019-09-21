@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 import json
 import codecs
 import datetime
-import unittest
 
 class Finder(object):
 
