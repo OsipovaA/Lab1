@@ -38,21 +38,3 @@ def main():
     Parcer.write_json(top)
 if __name__=="__main__":
     main()
-
-
-'''class Parcer_test(Parcer_StopGame,unittest.TestCase):
-    def test_parcer(url,topic):
-            with codecs.open("StopGame.json", encoding="utf-8") as file:
-                d = json.loads(file.read())
-                for j in d["Titles"]:
-                    resp = requests.get(url)
-                    if resp.status_code == 200:
-                        soup3 = BeautifulSoup(resp.text, 'html.parser')
-                        l3 = soup3.find("div", {"class": "lent-left"})
-                        for i in l3.findAll("div", "title lent-title"):
-     test_parcer(url3,top)
-
-    def __init__(self, url, height):
-        # Необходимо вызвать метод инициализации родителя.
-        # В Python 3.x это делается при помощи функции super()
-        super().__init__(kind, height)'''
