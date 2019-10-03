@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup
 import json
 import codecs
 import datetime
+import http.server
+import socketserver
 
 class Finder(object):
 
@@ -31,9 +33,13 @@ class Finder(object):
             json.dump(topics, outfile, indent=4, ensure_ascii=False, separators=(',', ': '))
         outfile.close()
 def main():
-    Parcer = Finder("https://stopgame.ru/news")
-    resp3 = Parcer.url_stuff()
-    top = Parcer.parcer(resp3)
-    Parcer.write_json(top)
+    PORT = 8080
+    Handler = http.server.SimpleHTTPRequestHandler
+    with socketserver.TCPServer(("", PORT), Handler) as httpd:
+        Parcer = Finder("https://stopgame.ru/news")
+        resp3 = Parcer.url_stuff()
+        top = Parcer.parcer(resp3)
+        Parcer.write_json(top)
+        httpd.serve_forever()
 if __name__=="__main__":
     main()
